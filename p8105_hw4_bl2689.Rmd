@@ -4,4 +4,27 @@ author: "Boxuan Li"
 date: "10/23/2017"
 output: html_document
 ---
+# Load packages and set the tibble display length.
+```{r, message=FALSE}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(haven)
+library(readxl)
+library(janitor)
+library(ggridges)
+library(rnoaa)
 
+options(tibble.print_min = 10)
+```
+
+# Read the dataset "FAS_Puls" and basically tidy it.
+```{r, message=FALSE}
+Puls.raw <- read_csv("../data/FAS_pups.csv") %>%
+  clean_names() %>%
+  separate(., litter_number, into = c("del", "litter_number"), sep = 1) %>%
+  select(., everything(), -del) %>%
+  gather(., key = "pd_outcome", value = "postnatal_days", pd_ears:pd_walk, na.rm = T) %>%
+  arrange(., litter_number)
+```
