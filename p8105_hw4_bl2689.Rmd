@@ -28,3 +28,16 @@ Puls.raw <- read_csv("../data/FAS_pups.csv") %>%
   gather(., key = "pd_outcome", value = "postnatal_days", pd_ears:pd_walk, na.rm = T) %>%
   arrange(., litter_number)
 ```
+# Plot of distribution of post-natal days for each developmental landmark
+```{r}
+Puls.raw %>% 
+  group_by(pd_outcome) %>% 
+  ggplot(aes(x = postnatal_days, y = pd_outcome, fill = pd_outcome)) +
+  geom_density_ridges(alpha = 0.5) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Distribution of post-natal days for each developmental landmark",
+    x = "postnatal days",
+    y = "pd names"
+  )
+```
