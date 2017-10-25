@@ -21,7 +21,7 @@ options(tibble.print_min = 10)
 
 # Read the dataset "FAS_Puls" and basically tidy it.
 ```{r, message=FALSE}
-Puls.raw <- read_csv("../data/FAS_pups.csv") %>%
+Puls.raw <- read_csv("./data/FAS_pups.csv") %>%
   clean_names() %>%
   separate(., litter_number, into = c("del", "litter_number"), sep = 1) %>%
   select(., everything(), -del) %>%
