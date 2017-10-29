@@ -4,8 +4,8 @@ author: "Boxuan Li"
 date: "10/23/2017"
 output: html_document
 ---
-# Load packages and set the tibble display length.
-```{r, message=FALSE}
+
+```{r, include=FALSE, message=FALSE}
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
@@ -19,8 +19,8 @@ library(rnoaa)
 options(tibble.print_min = 10)
 ```
 
-# Read the dataset "FAS_Puls" and basically tidy it.
-```{r, message=FALSE}
+## Read the dataset "FAS_Puls" and basically tidy it.
+```{r Read_dataset, message=FALSE}
 Puls.raw <- read_csv("./data/FAS_pups.csv") %>%
   clean_names() %>%
   separate(., litter_number, into = c("del", "litter_number"), sep = 1) %>%
@@ -28,8 +28,9 @@ Puls.raw <- read_csv("./data/FAS_pups.csv") %>%
   gather(., key = "pd_outcome", value = "postnatal_days", pd_ears:pd_walk, na.rm = T) %>%
   arrange(., litter_number)
 ```
-# Plot of distribution of post-natal days for each developmental landmark
-```{r}
+
+## Plot of distribution of post-natal days for each developmental landmark
+```{r Ridgeplot, message=FALSE}
 Puls.raw %>% 
   group_by(pd_outcome) %>% 
   ggplot(aes(x = postnatal_days, y = pd_outcome, fill = pd_outcome)) +
