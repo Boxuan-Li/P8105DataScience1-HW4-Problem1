@@ -39,6 +39,8 @@ Puls.raw %>%
   labs(
     title = "Distribution of post-natal days for each developmental landmark",
     x = "postnatal days",
-    y = "pd names"
+    y = "pd_outcome"
   )
 ```
+
+**Based on the plot, we can see that, different landmarks have different distributions and developmental time. Ears take the shortest time to develop and eyes take the longest time to develope. For more specific, pups can hear sounds within 1 weak after their birth but need about 2 weeks to be able to see things after they are born. In addition, pibot and walk have relatively wider distribution than ears and eyes, which means developmental time of pivot and walk are more variable among different pups.**
